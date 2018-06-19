@@ -1,8 +1,12 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Document</title><link rel="stylesheet" href="css/index.css"></head><body><div class="wrap"><div class="top"><h2>必买大牌</h2><ul class="list"></ul></div><footer>1</footer></div><script id="list" type="x-hanlebars-template">{{#each this}}
-        <dl>
-            <dt><img src="{{img}}" alt=""></dt>
-            <dd>{{title}}</dd>
-        </dl>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Document</title><link rel="stylesheet" href="css/index.css"></head><body><div class="wrap"><div class="top"><h2>必买大牌</h2><ul class="list"></ul></div><footer>1</footer></div><script id="list" type="text/x-hanlebars-template">{{#each this}}
+        <li>
+            {{#each this}}
+            <dl>
+                <dt><img src="{{img}}" alt=""></dt>
+                <dd>{{title}}</dd>
+            </dl>
+            {{/each}}
+        </li>
         {{/each}}</script></body><script src="js/libs/require.js"></script><script>require(['js/main'], function() {
         require(['index'])
     })</script></html>

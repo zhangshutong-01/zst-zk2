@@ -19,12 +19,16 @@
         </div>
         <footer>1</footer>
     </div>
-    <script id="list" type='x-hanlebars-template'>
+    <script id="list" type='text/x-hanlebars-template'>
         {{#each this}}
-        <dl>
-            <dt><img src="{{img}}" alt=""></dt>
-            <dd>{{title}}</dd>
-        </dl>
+        <li>
+            {{#each this}}
+            <dl>
+                <dt><img src="{{img}}" alt=""></dt>
+                <dd>{{title}}</dd>
+            </dl>
+            {{/each}}
+        </li>
         {{/each}}
     </script>
 </body>

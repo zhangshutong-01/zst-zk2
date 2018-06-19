@@ -11,7 +11,7 @@ var data = require('./data/data.json');
 gulp.task('server', ['scss'], function() {
     gulp.src('src')
         .pipe(server({
-            open: true,
+            // open: true,
             port: 8080,
             middleware: function(req, res) {
                 var pathname = url.parse(req.url).pathname;
@@ -31,13 +31,17 @@ gulp.task('server', ['scss'], function() {
 gulp.task('scss', function() {
     gulp.src('src/scss/**/*.scss')
         .pipe(scss())
-        .pipe(minCss())
-        .pipe(gulp.dest('build/css'))
+        .pipe(gulp.dest('src/css'))
 });
+gulp.task('minCss', function() {
+    gulp.src('src/scss/*.scss', { base: 'src' })
+        .pipe(minCss())
+        .pipe(gulp.dest('build'))
+})
 gulp.task('uglify', function() {
-    gulp.src('src/js/**/*.js')
+    gulp.src('src/js/**/*.js', { base: 'src' })
         .pipe(uglify())
-        .pipe(gulp.dest('build/js'))
+        .pipe(gulp.dest('build'))
 });
 gulp.task('minify', function() {
     gulp.src('src/*.html')
@@ -47,4 +51,4 @@ gulp.task('minify', function() {
 gulp.task('watch', function() {
     gulp.watch('src/scss/index.scss', ['scss'])
 });
-gulp.task('default', ['watch', 'server', 'uglify', 'minify'])
+gulp.task('default', ['watch', 'server', 'uglify', 'minify', 'minCss'])
