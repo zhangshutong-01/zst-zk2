@@ -14,52 +14,19 @@
         <div class="top">
             <h2>必买大牌</h2>
             <ul class="list">
-                <li>
-                    <dl>
-                        <dt><img src="imgs/img1.png" alt=""></dt>
-                        <dd>111111</dd>
-                    </dl>
-                    <dl>
-                        <dt><img src="imgs/img1.png" alt=""></dt>
-                        <dd>111111</dd>
-                    </dl>
-                    <dl>
-                        <dt><img src="imgs/img1.png" alt=""></dt>
-                        <dd>111111</dd>
-                    </dl>
-                </li>
-                <li>
-                    <dl>
-                        <dt><img src="imgs/img1.png" alt=""></dt>
-                        <dd>111111</dd>
-                    </dl>
-                    <dl>
-                        <dt><img src="imgs/img1.png" alt=""></dt>
-                        <dd>111111</dd>
-                    </dl>
-                    <dl>
-                        <dt><img src="imgs/img1.png" alt=""></dt>
-                        <dd>111111</dd>
-                    </dl>
-                </li>
-                <li>
-                    <dl>
-                        <dt><img src="imgs/img1.png" alt=""></dt>
-                        <dd>111111</dd>
-                    </dl>
-                    <dl>
-                        <dt><img src="imgs/img1.png" alt=""></dt>
-                        <dd>111111</dd>
-                    </dl>
-                    <dl>
-                        <dt><img src="imgs/img1.png" alt=""></dt>
-                        <dd>111111</dd>
-                    </dl>
-                </li>
+
             </ul>
         </div>
         <footer>1</footer>
     </div>
+    <script id="list" type='x-hanlebars-template'>
+        {{#each this}}
+        <dl>
+            <dt><img src="{{img}}" alt=""></dt>
+            <dd>{{title}}</dd>
+        </dl>
+        {{/each}}
+    </script>
 </body>
 <script src="js/libs/require.js"></script>
 <script>

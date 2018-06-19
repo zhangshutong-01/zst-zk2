@@ -1,0 +1,1 @@
+require(["jquery","render"],function(n,e){n.ajax({url:"/api/data",dataType:"json",success:function(n){console.log(n),e("#list",".list",n)},error:function(n){console.warn(n)}})});

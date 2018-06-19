@@ -3,6 +3,7 @@ var server = require(('gulp-webserver'));
 var uglify = require('gulp-uglify');
 var scss = require('gulp-sass');
 var minCss = require('gulp-clean-css');
+var htmlmin = require('gulp-htmlmin');
 var url = require('url');
 var fs = require('fs');
 var path = require('path');
@@ -31,14 +32,19 @@ gulp.task('scss', function() {
     gulp.src('src/scss/**/*.scss')
         .pipe(scss())
         .pipe(minCss())
-        .pipe(gulp.dest('src/css'))
+        .pipe(gulp.dest('build/css'))
 });
-// gulp.task('uglify', function() {
-//     gulp.src('src/js/**/*.js')
-//     .pipe(uglify())
-//     .pipe(gulp.dest('build'))
-// })
+gulp.task('uglify', function() {
+    gulp.src('src/js/**/*.js')
+        .pipe(uglify())
+        .pipe(gulp.dest('build/js'))
+});
+gulp.task('minify', function() {
+    gulp.src('src/*.html')
+        .pipe(htmlmin({ collapseWhitespace: true }))
+        .pipe(gulp.dest('build'));
+});
 gulp.task('watch', function() {
     gulp.watch('src/scss/index.scss', ['scss'])
 });
-gulp.task('default', ['watch', 'server'])
+gulp.task('default', ['watch', 'server', 'uglify', 'minify'])
